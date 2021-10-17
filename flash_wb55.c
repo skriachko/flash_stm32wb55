@@ -116,14 +116,14 @@ uint32_t flash_write (uint32_t offset, uint32_t *Data, uint16_t numberofwords)
 
     /* Verify that next operation can be proceed */
 	int attempts = 5;
-	do {
-	   status = FLASH_WaitForLastOperation(FLASH_TIMEOUT_VALUE);
+    do {
+        status = FLASH_WaitForLastOperation(FLASH_TIMEOUT_VALUE);
 
-	} while ((status != HAL_OK) && attempts-- >= 0);
+    } while ((status != HAL_OK) && attempts-- >= 0);
 
-	if (HAL_FLASHEx_Erase(&EraseInitStruct, &PAGEError) != HAL_OK)
-	{
-		/* Error occurred while page erase.*/
+    if (HAL_FLASHEx_Erase(&EraseInitStruct, &PAGEError) != HAL_OK)
+    {
+        /* Error occurred while page erase.*/
         return HAL_FLASH_GetError();
     }
 
